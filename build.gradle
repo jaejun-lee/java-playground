@@ -1,9 +1,18 @@
 plugins {
-    id 'java'
+    id "application"
+}
+apply plugin : "java"
+ext {
+   javaMainClass = 'com.galvanize.Conditional'
+}
+ 
+application {
+    mainClassName = javaMainClass
 }
 
 group 'com.galvanize'
 version '1.0-SNAPSHOT'
+
 
 repositories {
     mavenCentral()
@@ -17,7 +26,11 @@ jar {
     manifest {
         attributes(
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'com.galvanize.Application'
+                'Main-Class': 'com.galvanize.Conditional'
         )
     }
+}
+
+run{
+    standardInput = System.in
 }
